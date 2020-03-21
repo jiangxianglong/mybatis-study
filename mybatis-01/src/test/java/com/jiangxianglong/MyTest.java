@@ -57,6 +57,7 @@ public class MyTest {
         //提交事务
         session.commit();
 
+
         session.close();
     }
 
