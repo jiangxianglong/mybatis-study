@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiangxianglong.dao.UserMapper">
+<!--  查询所有记录  -->
+    <select id="selectUser" resultType="com.jiangxianglong.pojo.User">
+    select * from user
+  </select>
+
+<!--  根据用户记录Id查询记录 -->
+    <select id="selectUserById" parameterType="int" resultType="com.jiangxianglong.pojo.User">
+    select * from user where id = #{id}
+  </select>
+
+<!--   插入用户记录ID -->
+    <insert id="userAdd" parameterType="com.jiangxianglong.pojo.User">
+       insert into user (id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+
+<!--    更新用户名称 密码-->
+    <update id="userUpd" parameterType="com.jiangxianglong.pojo.User">
+       update user set name = #{name},pwd=#{pwd} where id = #{id}
+    </update>
+
+<!--    根据用户名称模糊查询 -->
+    <select id="selectUserByName" parameterType="string" resultType="com.jiangxianglong.pojo.User">
+    select * from user where name like "%"#{name}"%"
+  </select>
+</mapper>
